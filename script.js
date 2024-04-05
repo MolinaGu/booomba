@@ -10,7 +10,7 @@ let bt_sorte2 = document.getElementById('bts2');
 let bt_sorte3 = document.getElementById('bts3');
 let bt_beep = document.getElementById('btoff1');
 let bt_boom = document.getElementById('btoff2');
-
+let bt_ocultar = document.getElementById('btocult');
 
 
 let controle = document.getElementById('control');
@@ -34,6 +34,7 @@ let oculto = false;
 let escolha;
 let beep_off = false;
 let boom_off = false;
+let invisivel = false;
 
 let classes = ["animais", "coisas de cozinha", "coisas de banheiro", "nomes", "roupas", "cores", "comidas", "esportes", "coisas de festa de aniversário", "coisas da praia", "coisas da escola", "sobremesas", "bebidas", "comidas geladas", "adjetivos", "vestuario", "meios de transporte", "personagens famosos", "fantasias", "contos de fada", "coisas da sala de casa", "materiais escolares"];
 
@@ -44,7 +45,11 @@ const temporizar = (tempo_pre_marcado) => {
         if(oculto == true){
             document.getElementById('cronometro').innerHTML = "---";
         }else{
-        document.getElementById('cronometro').innerHTML = time;
+            if(invisivel == true){
+                document.getElementById('cronometro').innerHTML = "---";
+            }else{
+                document.getElementById('cronometro').innerHTML = time;
+            }
         }
         
         
@@ -77,7 +82,11 @@ const aleatorizar = (max, min) => {
     escolha = Math.floor(Math.random() * (classes.length - 0)+0);
     display.innerHTML = classes[escolha];
     intervalo = setInterval(function() {
-        document.getElementById('cronometro').innerHTML = "---";
+        if(invisivel == true){
+            document.getElementById('cronometro').innerHTML = "---";
+        }else{
+            document.getElementById('cronometro').innerHTML = time;
+        }
         
         
         if (time == 0) {
@@ -355,5 +364,22 @@ bt_boom.addEventListener('click', ()=>{
         bt_boom.innerHTML = `EXPLOSÃO <svg style="margin-left: 5px;" xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-volume-down-fill" viewBox="0 0 16 16">
         <path d="M9 4a.5.5 0 0 0-.812-.39L5.825 5.5H3.5A.5.5 0 0 0 3 6v4a.5.5 0 0 0 .5.5h2.325l2.363 1.89A.5.5 0 0 0 9 12zm3.025 4a4.5 4.5 0 0 1-1.318 3.182L10 10.475A3.5 3.5 0 0 0 11.025 8 3.5 3.5 0 0 0 10 5.525l.707-.707A4.5 4.5 0 0 1 12.025 8"/>
       </svg>`;
+    }
+});
+
+
+bt_ocultar.addEventListener('click', ()=>{
+    if(invisivel == false){
+        bt_ocultar.innerHTML = `OCULTAR <svg style="margin-left: 5px;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-slash-fill" viewBox="0 0 16 16">
+        <path d="m10.79 12.912-1.614-1.615a3.5 3.5 0 0 1-4.474-4.474l-2.06-2.06C.938 6.278 0 8 0 8s3 5.5 8 5.5a7 7 0 0 0 2.79-.588M5.21 3.088A7 7 0 0 1 8 2.5c5 0 8 5.5 8 5.5s-.939 1.721-2.641 3.238l-2.062-2.062a3.5 3.5 0 0 0-4.474-4.474z"/>
+        <path d="M5.525 7.646a2.5 2.5 0 0 0 2.829 2.829zm4.95.708-2.829-2.83a2.5 2.5 0 0 1 2.829 2.829zm3.171 6-12-12 .708-.708 12 12z"/>
+      </svg>`;
+      invisivel = true;
+    }else{
+        bt_ocultar.innerHTML = `OCULTAR <svg style="margin-left: 5px;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
+        <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0"/>
+        <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8m8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7"/>
+      </svg>`;
+      invisivel = false;
     }
 });
