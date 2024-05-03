@@ -361,7 +361,7 @@ bt_boom.addEventListener('click', ()=>{
 });
 console.log(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent))
 if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
-    document.getElementById('blankvision').classList.add('none');
-}else{
     document.getElementById('blankvision').classList.remove('none');
+}else{
+    document.getElementById('blankvision').classList.add('none');
 }
