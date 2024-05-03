@@ -37,6 +37,7 @@ let boom_off = false;
 let classes = ["animais", "coisas de cozinha", "coisas de banheiro", "nomes", "roupas", "cores", "comidas", "esportes", "coisas de festa de aniversário", "coisas da praia", "coisas da escola", "sobremesas", "bebidas", "comidas geladas", "adjetivos", "vestuario", "meios de transporte", "personagens famosos", "fantasias", "contos de fada", "coisas da sala de casa", "materiais escolares"];
 
 
+
 const temporizar = (tempo_pre_marcado) => {
     var time = tempo_pre_marcado;
     intervalo = setInterval(function() {
@@ -358,5 +359,9 @@ bt_boom.addEventListener('click', ()=>{
       </svg>`;
     }
 });
-
-
+console.log(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent))
+if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+    document.getElementById('blankvision').classList.add('none');
+}else{
+    document.getElementById('blankvision').classList.remove('none');
+}
