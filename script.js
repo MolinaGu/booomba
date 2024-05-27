@@ -78,8 +78,8 @@ const aleatorizar = (max, min) => {
     escolha = Math.floor(Math.random() * (classes.length - 0)+0);
     display.innerHTML = classes[escolha];
     intervalo = setInterval(function() {  
-        document.getElementById('cronometro').innerHTML = time;
-        
+        document.getElementById('cronometro').innerHTML = "---";
+        console.log(time)
         
         
         if (time == 0) {
@@ -100,6 +100,7 @@ const aleatorizar = (max, min) => {
             }
             time--; 
             timestoped = time + 1;
+
         }
     }, 1000); 
     
@@ -108,9 +109,9 @@ const aleatorizar = (max, min) => {
 
 bt1.addEventListener('mouseenter', ()=>{
     display.innerHTML = "Explodir em 120 seg";
-});
-bt1.addEventListener('mouseleave', ()=>{
-    display.innerHTML = "...";
+    bt1.addEventListener('mouseleave', ()=>{
+        display.innerHTML = "...";
+    });
 });
 bt1.addEventListener('click',   ()=>{
     if(alreadyclicked == false){
